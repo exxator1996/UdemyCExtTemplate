@@ -9,9 +9,9 @@ Create the following structs:
   - speed in $\frac{m}{s}$
   - distance to ego vehicle in meter
 - NeighborVehiclesType
-  - vehicles on left lane array [2 entries in total]
-  - vehicles on center lane array [2 entries in total]
-  - vehicles on right lane array [2 entries in total]
+  - vehicles on left lane array with 2 entries in total
+  - vehicles on center lane array with 2 entries in total
+  - vehicles on right lane array with 2 entries in total
   - Create a define for the array length from above
 
 Note:
@@ -34,9 +34,11 @@ void print_neighbor_vehicles(const NeighborVehiclesType *vehicles);
 ```
 
 - init_ego_vehicle
-  - Just choose any current speed, and lane of the ego vehicle
+  - Set the speed, and lane of the ego vehicle
+  - You can choose any speed $\in[20, 50]$
 - init_vehicles
-  - Just choose any current speed, and lane of all other vehicles (6 in total)
+  - Set the speed, and lane of all other vehicles (6 in total)
+  - You can choose any speed $\in[20, 50]$
 - print_vehicle
   - print out all information of a vehicle
 - print_neighbor_vehicles
@@ -69,7 +71,7 @@ int main()
 
     printf("Start simulation?: ");
     char Input;
-    scanf("%c", &Input);
+    (void)scanf("%c", &Input);
 
     while (true)
     {

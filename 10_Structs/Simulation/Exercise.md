@@ -49,7 +49,7 @@ int main()
 
     printf("Start simulation?: ");
     char Input;
-    scanf("%c", &Input);
+    (void)scanf("%c", &Input);
 
     while (true)
     {

@@ -13,7 +13,6 @@ float mps_to_kph(const float mps);
 void decrease_speed(VehicleType *ego_vehicle);
 
 void longitudinal_control(const VehicleType *front_vehicle, VehicleType *ego_vehicle);
-
 ```
 
 - mps_to_kph
@@ -49,7 +48,7 @@ int main()
 
     printf("Start simulation?: ");
     char Input;
-    scanf("%c", &Input);
+    (void)scanf("%c", &Input);
 
     while (true)
     {

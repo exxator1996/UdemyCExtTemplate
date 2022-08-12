@@ -2,11 +2,6 @@
 
 Update the following functions:
 
-```cpp
-const VehicleType *get_vehicle_array(const LaneAssociationType ego_lane,
-                                     const NeighborVehiclesType *vehicles)
-```
-
 - longitudinal_control
   - We don't pass in the front vehicle anymore
     - Get the front/rear vehicle internally **get_vehicle_array**
@@ -14,6 +9,9 @@ const VehicleType *get_vehicle_array(const LaneAssociationType ego_lane,
 Implement the following functions:
 
 ```cpp
+const VehicleType *get_vehicle_array(const LaneAssociationType ego_lane,
+                                     const NeighborVehiclesType *vehicles)
+
 LaneAssociationType get_lane_change_request(const VehicleType *ego_vehicle,
                                             const NeighborVehiclesType  *vehicles);
 
@@ -22,6 +20,8 @@ bool lateral_control(const NeighborVehiclesType *vehicles,
                      VehicleType *ego_vehicle);
 ```
 
+- get_vehicle_array
+  - Return the vehicle array for a certain lane
 - get_lane_change_request
   - Send a lane change request if the vehicle would crash with the rear vehicle
     - If there is enough space on the right lane, send a request
@@ -56,7 +56,7 @@ int main()
 
     printf("Start simulation?: ");
     char Input;
-    scanf("%c", &Input);
+    (void)scanf("%c", &Input);
 
     while (true)
     {

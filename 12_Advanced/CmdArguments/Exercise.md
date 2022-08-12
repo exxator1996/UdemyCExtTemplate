@@ -49,7 +49,7 @@ int main(int argc, char const **argv)
 
     printf("Start simulation?: ");
     char Input;
-    scanf("%c", &Input);
+    (void)scanf("%c", &Input);
 
     for (uint32_t cycle = 0; cycle < NUM_CYCLES; cycle++)
     {

@@ -2,9 +2,7 @@
 
 ## Compiler
 
-- Windows: g++, gdb, make via [Cygwin64](https://cygwin.com/install.html)
-- Linux: g++, gdb, make via package manager (apt for Ubuntu for example)
-- Mac: clang++, lldb, make via xcode-tools
+Any GCC, Clang or MSVC Compiler
 
 ## IDE: Visual Studio Code
 
@@ -15,19 +13,12 @@
 - Coding Tools Extension Pack (franneck94)
 - C/C++ Extension Pack (franneck94)
 
-## Clang Tools
-
-We will use clang-format and clang-tidy.
-
-- Clang-format: Formatter tool for source code
-- Clang-tidy: Checks for issues in the code (similar to the compiler warnings)
-
 ## Steps from the video
 
 0. Install all tools from the main course (including C/C++ Runner)
-1. Copy settings below
-2. Select folder in the blue status bar down below
-3. F1 (Command Palette) > C Config Files (Minimal)
+1. Select folder in the blue status bar down below
+2. F1 (Command Palette) > C Config Files (Minimal)
+3. Copy settings below
 4. Paste the copied settings into the **settings.json** file
 
 ### Extra settings (for local .vscode/settings.json file)

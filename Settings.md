@@ -53,5 +53,5 @@ Any GCC, Clang or MSVC Compiler
     "*.c",
     "**/*.h",
     "**/*.c"
-  ],
+  ]
 ```

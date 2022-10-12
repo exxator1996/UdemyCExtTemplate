@@ -47,11 +47,5 @@ Any GCC, Clang or MSVC Compiler
       "**/scripts/"
   ],
   "C_Cpp_Runner.enableWarnings": true,
-  "C_Cpp_Runner.warningsAsError": false,
-  "Workspace_Formatter.includePattern": [
-    "*.h",
-    "*.c",
-    "**/*.h",
-    "**/*.c"
-  ]
+  "C_Cpp_Runner.warningsAsError": false
 ```

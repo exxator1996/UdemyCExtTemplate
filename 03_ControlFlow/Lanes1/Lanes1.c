@@ -38,9 +38,7 @@ int main()
         break;
     }
 
-
     printf("\n\n");
-
     printf("Speed: %.6f\n", speed);
 
 

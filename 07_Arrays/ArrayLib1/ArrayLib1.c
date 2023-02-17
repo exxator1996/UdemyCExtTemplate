@@ -9,6 +9,11 @@ void unique_elements(int32_t *array, size_t length)
     int32_t currentElement = 0;
     int16_t counter = 0;
 
+     if (array == NULL || length == 0)
+    {
+        return;
+    }
+
     for (size_t i = 0; i < length; i++)
     {
         currentElement = array[i];
@@ -27,14 +32,18 @@ void unique_elements(int32_t *array, size_t length)
     }
 }
 
-void remove_duplicates(int32_t *array, size_t *length)
+void remove_duplicates(int32_t *array, int32_t *length)
 {
-    for (size_t i = 0; i < *length; i++)
+    if (array == NULL || length == 0)
+    {
+        return;
+    }
+    for (int32_t i = 0; i < *length; i++)
     {
         int32_t currentElement = array[i];
-        size_t duplicatePosition = -1;
+        int32_t duplicatePosition = -1;
 
-        for (size_t j = i + 1; j < *length; j++)
+        for (int32_t j = i + 1; j < *length; j++)
         {
             if (currentElement == array[j])
             {
@@ -49,7 +58,7 @@ void remove_duplicates(int32_t *array, size_t *length)
             continue;
         }
 
-        for (size_t j = duplicatePosition; j < *length; j++)
+        for (int32_t j = duplicatePosition; j < *length; j++)
         {
             array[j] = array[j + 1];
         }
@@ -58,6 +67,11 @@ void remove_duplicates(int32_t *array, size_t *length)
 
 void rotate_left(int32_t *array, size_t length)
 {
+    if (array == NULL || length == 0)
+    {
+        return;
+    }
+
     int32_t buffer = array[0];
     for (size_t i = 0; i < length - 1; i++)
     {
@@ -69,6 +83,10 @@ void rotate_left(int32_t *array, size_t length)
 
 void rotate_right(int32_t *array, size_t length)
 {
+    if (array == NULL || length == 0)
+    {
+        return;
+    }
     int32_t buffer = array[length - 1];
     for (size_t i = length; i > 0; i--)
     {
@@ -81,7 +99,7 @@ void rotate_right(int32_t *array, size_t length)
 int main()
 {
     int32_t array[] = {1, 1, 2, 3, 3, 4};
-    size_t length = 6;
+    int32_t length = 6;
 
     printf("unique_elements: \n");
     unique_elements(array, length);

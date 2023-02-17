@@ -7,6 +7,11 @@ bool all_of(int32_t *array, size_t length, int32_t value)
 {
     bool is_true;
 
+     if (array == NULL || length == 0)
+    {
+        return false;
+    }
+
     for (size_t i = 0; i < length; i++)
     {
         if (array[i] != value)
@@ -26,6 +31,11 @@ bool all_of(int32_t *array, size_t length, int32_t value)
 bool any_of(int32_t *array, size_t length, int32_t value)
 {
     bool is_true;
+
+    if (array == NULL || length == 0)
+    {
+        return false;
+    }
 
     for (size_t i = 0; i < length; i++)
     {
@@ -47,6 +57,12 @@ bool none_of(int32_t *array, size_t length, int32_t value)
 {
     bool is_true;
 
+    if (array == NULL || length == 0)
+    {
+        return false;
+    }
+
+
     for (size_t i = 0; i < length; i++)
     {
         if (array[i] == value)
@@ -66,6 +82,12 @@ bool none_of(int32_t *array, size_t length, int32_t value)
 size_t count(int32_t *array, size_t length, int32_t value)
 {
     size_t count = 0;
+
+    if (array == NULL || length == 0)
+    {
+        return count;
+    }
+
 
     for (size_t i = 0; i < length; i++)
     {

@@ -30,7 +30,6 @@ int32_t *inclusive_scan(int32_t *array, size_t length)
     }
 
     return result_array;
-
 }
 
 int main()

@@ -10,48 +10,50 @@
 
 void print_scene(float speed_mps, uint32_t lane_idx)
 {
-
-    char rowTop[] = "\t\t  L   C   R";
-
-    char rowWithoutVehicle[] = "\t|   |   |   |";
-    char rowWithVehicleLeft[] = "\t| V |   |   |";
-    char rowWithVehicleCenter[] = "\t|   | V |   |";
-    char rowWithVehicleRight[] = "\t|   |   | V |";
-
-    char street[11][15];
-
-    for (int i = 0; i < 11; i++)
-    {
-        strcpy(street[i], rowWithoutVehicle);
-    }
-
-
-    switch (lane_idx)
-    {
-    case LANE_ASSOCIATION_TYPE_LEFT:
-        strcpy(street[5], rowWithVehicleLeft);
-        break;
-    case LANE_ASSOCIATION_TYPE_CENTER:
-        strcpy(street[5], rowWithVehicleCenter);
-        break;
-    case LANE_ASSOCIATION_TYPE_RIGHT:
-        strcpy(street[5], rowWithVehicleRight);
-        break;
-    case LANE_ASSOCIATION_TYPE_NONE:
-    default:
-        strcpy(street[5], rowWithoutVehicle);
-        break;
-    }
-
-    printf("%s\n", rowTop);
-
-    for (int j = 0; j < 11; j++)
-    {
-        printf("%d\t%s\n", (100 - j * 20),street[j]);
-    }
-
     printf("\n\n");
-    printf("Speed: %.6f\n", speed_mps);
+    printf("\t  L   C   R\n");
+
+    float offset_m = 20.0f;
+
+    for (int32_t i = 100; i >= -100; i -= (int32_t)(offset_m))
+    {
+        char left_string[] = "   ";
+        char center_string[] = "   ";
+        char right_string[] = "   ";
+
+        if (i == 0)
+        {
+            switch (lane_idx)
+            {
+            case LANE_ASSOCIATION_TYPE_LEFT:
+            {
+                strncpy(left_string, " V ", 4);
+                break;
+            }
+            case LANE_ASSOCIATION_TYPE_CENTER:
+            {
+                strncpy(center_string, " V ", 4);
+                break;
+            }
+            case LANE_ASSOCIATION_TYPE_RIGHT:
+            {
+                strncpy(right_string, " V ", 4);
+                break;
+            }
+            case LANE_ASSOCIATION_TYPE_NONE:
+            default:
+            {
+                break;
+            }
+            }
+        }
+
+        printf("%d\t|%s|%s|%s|\n", i, left_string, center_string, right_string);
+    }
+
+    printf("\n");
+    printf("Speed: %f\n", speed_mps);
+    printf("\n");
 }
 
 void get_user_input(float *speed_mps, uint32_t *lane_idx)

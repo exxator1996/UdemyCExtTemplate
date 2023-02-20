@@ -1,7 +1,9 @@
 #include <stdio.h>
 
+
 int main()
 {
+    char test = "Test";
     float millisconds = 0.0F;
     float seconds, minutes, hours, days;
 

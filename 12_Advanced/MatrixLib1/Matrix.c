@@ -211,3 +211,174 @@ Matrix *divideMatrixByScalar(const Matrix *matrix, const float scalar)
 
     return resultMatrix;
 }
+
+Vector *minMatrix(const Matrix *matrix, const Axis axis)
+{
+    if (matrix == NULL)
+    {
+        return NULL;
+    }
+
+    Vector *vector;
+
+    int previous_value = 0;
+
+    if (axis == AXIS_0)
+    {
+        vector = createVector(matrix->num_cols, 0);
+        if (vector == NULL)
+        {
+            return NULL;
+        }
+
+
+        for (size_t j = 0; j < matrix->num_cols; j++)
+        {
+            previous_value = matrix->data[matrixIndex(matrix->num_cols, 0, j)];
+
+            for (size_t i = 1; i < matrix->num_rows; i++)
+            {
+                if (matrix->data[matrixIndex(matrix->num_cols, i, j)] < previous_value)
+                {
+                    previous_value = matrix->data[matrixIndex(matrix->num_cols, i, j)];
+                }
+            }
+            vector->data[j] = previous_value;
+        }
+    }
+    else if (axis == AXIS_1)
+    {
+        vector = createVector(matrix->num_rows, 0);
+        if (vector == NULL)
+        {
+            return NULL;
+        }
+        for (size_t i = 0; i < matrix->num_rows; i++)
+        {
+            previous_value = matrix->data[matrixIndex(matrix->num_cols, i, 0)];
+            for (size_t j = 0; j < matrix->num_cols; j++)
+            {
+                if (matrix->data[matrixIndex(matrix->num_cols, i, j)] < previous_value)
+                {
+                    previous_value = matrix->data[matrixIndex(matrix->num_cols, i, j)];
+                }
+            }
+            vector->data[i] = previous_value;
+        }
+    }
+    return vector;
+}
+
+Vector *maxMatrix(const Matrix *matrix, const Axis axis)
+{
+    if (matrix == NULL)
+    {
+        return NULL;
+    }
+
+    Vector *vector;
+
+    int previous_value = 0;
+
+    if (axis == AXIS_0)
+    {
+        vector = createVector(matrix->num_cols, 0);
+        if (vector == NULL)
+        {
+            return NULL;
+        }
+
+
+        for (size_t j = 0; j < matrix->num_cols; j++)
+        {
+            previous_value = matrix->data[matrixIndex(matrix->num_cols, 0, j)];
+
+            for (size_t i = 1; i < matrix->num_rows; i++)
+            {
+                if (matrix->data[matrixIndex(matrix->num_cols, i, j)] > previous_value)
+                {
+                    previous_value = matrix->data[matrixIndex(matrix->num_cols, i, j)];
+                }
+            }
+            vector->data[j] = previous_value;
+        }
+    }
+    else if (axis == AXIS_1)
+    {
+        vector = createVector(matrix->num_rows, 0);
+        if (vector == NULL)
+        {
+            return NULL;
+        }
+        for (size_t i = 0; i < matrix->num_rows; i++)
+        {
+            previous_value = matrix->data[matrixIndex(matrix->num_cols, i, 0)];
+            for (size_t j = 0; j < matrix->num_cols; j++)
+            {
+                if (matrix->data[matrixIndex(matrix->num_cols, i, j)] > previous_value)
+                {
+                    previous_value = matrix->data[matrixIndex(matrix->num_cols, i, j)];
+                }
+            }
+            vector->data[i] = previous_value;
+        }
+    }
+    return vector;
+}
+
+Vector *meanMatrix(const Matrix *matrix, const Axis axis)
+{
+    if (matrix == NULL)
+    {
+        return NULL;
+    }
+
+    Vector *vector;
+
+    int mean = 0;
+
+    if (axis == AXIS_0)
+    {
+        vector = createVector(matrix->num_cols, 0);
+        if (vector == NULL)
+        {
+            return NULL;
+        }
+
+
+        for (size_t j = 0; j < matrix->num_cols; j++)
+        {
+            mean = matrix->data[matrixIndex(matrix->num_cols, 0, j)];
+
+            for (size_t i = 1; i < matrix->num_rows; i++)
+            {
+                if (matrix->data[matrixIndex(matrix->num_cols, i, j)] > mean)
+                {
+                    mean += matrix->data[matrixIndex(matrix->num_cols, i, j)];
+                }
+            }
+            vector->data[j] = mean / (float)matrix->num_rows;
+        }
+    }
+    else if (axis == AXIS_1)
+    {
+        vector = createVector(matrix->num_rows, 0);
+        if (vector == NULL)
+        {
+            return NULL;
+        }
+        for (size_t i = 0; i < matrix->num_rows; i++)
+        {
+            mean = matrix->data[matrixIndex(matrix->num_cols, i, 0)];
+            for (size_t j = 0; j < matrix->num_cols; j++)
+            {
+                if (matrix->data[matrixIndex(matrix->num_cols, i, j)] > mean)
+                {
+                    mean += matrix->data[matrixIndex(matrix->num_cols, i, j)];
+                }
+            }
+            vector->data[i] = mean / (float)matrix->num_cols;
+        }
+    }
+    return vector;
+}

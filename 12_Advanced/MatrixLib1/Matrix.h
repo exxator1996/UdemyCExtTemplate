@@ -19,6 +19,12 @@ typedef struct
     size_t num_cols;
 } Matrix;
 
+typedef enum
+{
+    AXIS_0,
+    AXIS_1,
+} Axis;
+
 
 /**********************/
 /*   MAIN FUNCTIONS   */
@@ -52,6 +58,12 @@ Matrix *multiplyMatrix(const Matrix *matrix1, const Matrix *matrix2);
 Matrix *multiplyMatrixByScalar(const Matrix *matrix, const float scalar);
 
 Matrix *divideMatrixByScalar(const Matrix *matrix, const float scalar);
+
+Vector *minMatrix(const Matrix *matrix, const Axis axis);
+
+Vector *maxMatrix(const Matrix *matrix, const Axis axis);
+
+Vector *meanMatrix(const Matrix *matrix, const Axis axis);
 
 /**********************/
 /*  I/O FUNCTIONS     */

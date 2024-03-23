@@ -23,11 +23,13 @@ Vector *multiplyMatrixByVector(const Matrix *matrix, const Vector *vector);
 - matrixTranspose
   - Adapt the transpose function from the main course to our matrix data structure
   - Note the index mapping is:
+
   ```cpp
   result[j][i] = matrix[i][j]
   ```
+
 - multiplyMatrixByVector
-  - $\underset{m}{\vec{v_{2}} } =  \underset{m\times n}{M_1} \times 
+  - $\underset{m}{\vec{v_{2}} } =  \underset{m\times n}{M_1} \times
 \underset{n}{\vec{v_{1}}}$
   - More information: [see here](https://mathinsight.org/matrix_vector_multiplication)
 

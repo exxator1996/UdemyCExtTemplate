@@ -9,7 +9,7 @@ Matrix *createMatrix(const size_t num_rows, const size_t num_cols, const float v
         return NULL;
     }
 
-    matrix->data = createArray(num_cols * num_rows, value);
+    matrix->data = createArray((unsigned int)(num_cols * num_rows), value);
 
     if (matrix->data == NULL)
     {
@@ -225,7 +225,7 @@ Vector *minMatrix(const Matrix *matrix, const Axis axis)
 
     if (axis == AXIS_0)
     {
-        vector = createVector(matrix->num_cols, 0);
+        vector = createVector((unsigned int)(matrix->num_cols), 0);
         if (vector == NULL)
         {
             return NULL;
@@ -381,4 +381,51 @@ Vector *meanMatrix(const Matrix *matrix, const Axis axis)
         }
     }
     return vector;
+}
+
+Matrix *matrixTranspose(const Matrix *matrix)
+{
+    Matrix *transposedMatrix = createMatrix(matrix->num_cols, matrix->num_rows, 1);
+
+    for (int i = 0; i < matrix->num_rows; i++)
+    {
+        for (int j = 0; j < matrix->num_cols; j++)
+        {
+            transposedMatrix->data[matrixIndex(transposedMatrix->num_cols, j, i)] =
+                matrix->data[matrixIndex(matrix->num_cols, i, j)];
+        }
+    }
+
+    return transposedMatrix;
+}
+
+bool matrixMultiplyByVectorPossible(const Matrix *matrix, const Vector *vector)
+{
+    if (matrix->num_cols == vector->length)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+Vector *multiplyMatrixByVector(const Matrix *matrix, const Vector *vector)
+{
+    if (!matrixMultiplyByVectorPossible(matrix, vector))
+    {
+        return NULL;
+    }
+
+    Vector *resultVector = createVector(matrix->num_rows, 0);
+
+    for (int i = 0; i < matrix->num_rows; i++)
+    {
+        for (int j = 0; j < matrix->num_cols; j++)
+        {
+            resultVector->data[i] += vector->data[j] * matrix->data[matrixIndex(matrix->num_cols, i, j)];
+        }
+    }
+    return resultVector;
 }

@@ -52,4 +52,6 @@ float minVector(const Vector *vector);
 
 float maxVector(const Vector *vector);
 
+float vectorEuclidNorm(const Vector *vector);
+
 #endif // VECTOR_H

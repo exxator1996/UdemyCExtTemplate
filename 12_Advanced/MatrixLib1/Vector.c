@@ -1,3 +1,4 @@
+#include <math.h>
 #include <float.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -159,8 +160,7 @@ void printVector(const Vector *vector)
 
 Vector *addVectors(const Vector *vec1, const Vector *vec2)
 {
-    if (NULL == vec1 || NULL == vec2 || vec1->data == NULL ||
-        vec2->data == NULL || vec1->length != vec2->length)
+    if (NULL == vec1 || NULL == vec2 || vec1->data == NULL || vec2->data == NULL || vec1->length != vec2->length)
     {
         return NULL;
     }
@@ -177,8 +177,7 @@ Vector *addVectors(const Vector *vec1, const Vector *vec2)
 
 Vector *subVectors(const Vector *vec1, const Vector *vec2)
 {
-    if (NULL == vec1 || NULL == vec2 || vec1->data == NULL ||
-        vec2->data == NULL || vec1->length != vec2->length)
+    if (NULL == vec1 || NULL == vec2 || vec1->data == NULL || vec2->data == NULL || vec1->length != vec2->length)
     {
         return NULL;
     }
@@ -195,8 +194,7 @@ Vector *subVectors(const Vector *vec1, const Vector *vec2)
 
 float multiplyVectors(const Vector *vec1, const Vector *vec2)
 {
-    if (NULL == vec1 || NULL == vec2 || vec1->data == NULL ||
-        vec2->data == NULL || vec1->length != vec2->length)
+    if (NULL == vec1 || NULL == vec2 || vec1->data == NULL || vec2->data == NULL || vec1->length != vec2->length)
     {
         return 0.0f;
     }
@@ -295,4 +293,15 @@ float maxVector(const Vector *vector)
     }
 
     return current_max;
+}
+
+float vectorEuclidNorm(const Vector *vector)
+{
+    float euclidNorm;
+    for (int i = 0; i < vector->length; i++)
+    {
+        euclidNorm += vector->data[i] * vector->data[i];
+    }
+
+    return sqrtf(euclidNorm);
 }
